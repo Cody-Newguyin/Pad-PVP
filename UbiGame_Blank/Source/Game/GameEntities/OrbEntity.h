@@ -15,10 +15,10 @@ namespace Game
 		void SetId(int newId);
 		void setTexture();
 
-		void SetTexture();
-
 	protected:
 		int Id;
+		int xPos;
+		int yPos;
 
 		GameEngine::SpriteRenderComponent* m_renderComponent;
 	};
