@@ -6,7 +6,6 @@ Game::OrbEntity::OrbEntity()
 	m_renderComponent->SetZLevel(2);
 	this->SetPos(sf::Vector2f(100.f, 100.f));
 	this->SetId(1);
-	this->SetTexture();
 	//this->SetSize(sf::Vector2f(30.f, 30.f));
 }
 
@@ -25,7 +24,26 @@ void Game::OrbEntity::SetId(int newId)
 	this->SetTexture();
 }
 
+// ---------------- GETTERS/SETTERS for position of orb objects
 
+int Game::OrbEntity::GetxPos() {
+	return this->xPos;
+}
+
+int Game::OrbEntity::GetyPos() {
+	return this->yPos;
+}
+
+void Game::OrbEntity::SetxPos(int x) {
+	this->xPos = x;
+}
+
+void Game::OrbEntity::SetyPos(int y) {
+	this->yPos = y;
+}
+
+
+// --------------- Settexture for each orb as basec on specific id values
 
 void Game::OrbEntity::SetTexture() {
 	if (this->GetId() == 1) {
