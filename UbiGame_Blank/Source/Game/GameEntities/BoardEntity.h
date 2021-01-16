@@ -21,6 +21,10 @@ namespace Game
 
 		void initBoardPos();
 
+		OrbEntity* GetFirstOrb();
+
+		std::vector<std::vector<OrbEntity*>> GetTiles();
+
 	protected:
 		OrbEntity* orb;
 		std::vector<std::vector<OrbEntity*>> tiles;

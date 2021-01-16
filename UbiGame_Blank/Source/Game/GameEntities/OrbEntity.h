@@ -14,6 +14,8 @@ namespace Game
 		int GetId();
 		void SetId(int newId);
 
+		void SetTexture();
+
 	protected:
 		int Id;
 

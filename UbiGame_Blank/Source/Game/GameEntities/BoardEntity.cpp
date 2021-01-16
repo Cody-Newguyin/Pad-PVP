@@ -54,3 +54,11 @@ void BoardEntity::initBoardPos() {
 		}
 	}
 }
+
+OrbEntity* BoardEntity::GetFirstOrb() {
+	return Game::BoardEntity::tiles[0][0];
+}
+
+std::vector<std::vector<OrbEntity*>> BoardEntity::GetTiles() {
+	return tiles;
+}
