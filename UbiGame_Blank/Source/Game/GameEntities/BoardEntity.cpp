@@ -55,6 +55,12 @@ void BoardEntity::initBoardPos() {
 	}
 }
 
+void BoardEntity::SwapOrb(int x1, int y1, int x2, int y2) {
+	OrbEntity* tempOrb = Game::BoardEntity::tiles[x1][y1];
+	Game::BoardEntity::tiles[x1][y1] = Game::BoardEntity::tiles[x2][y2];
+	Game::BoardEntity::tiles[x2][y2] = tempOrb;
+}
+
 OrbEntity* BoardEntity::GetFirstOrb() {
 	return Game::BoardEntity::tiles[0][0];
 }

@@ -16,6 +16,6 @@ PlayerEntity::~PlayerEntity()
 void PlayerEntity::setCurrentOrb(OrbEntity* newOrb)
 {
 	currentOrb = newOrb;
-	currentOrb->SetId(1);
+	currentOrb->SetId(2);
 }
 

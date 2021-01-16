@@ -16,7 +16,7 @@ GameBoard::GameBoard()
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(board);
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(player);
 	
-	//player->setCurrentOrb(board->GetFirstOrb());
+	player->setCurrentOrb(board->GetFirstOrb());
 }
 
 
