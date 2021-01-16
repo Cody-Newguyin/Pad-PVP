@@ -23,7 +23,7 @@ namespace Game
 
 	protected:
 		OrbEntity* orb;
-		std::vector<std::vector<OrbEntity>> tiles;
+		std::vector<std::vector<OrbEntity*>> tiles;
 		sf::Vector2f tilesPos[6][5];
 
 		GameEngine::SpriteRenderComponent* m_renderComponent;
