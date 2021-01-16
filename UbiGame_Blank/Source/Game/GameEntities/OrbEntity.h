@@ -14,10 +14,18 @@ namespace Game
 		int GetId();
 		void SetId(int newId);
 
+		int GetxPos();
+		int GetyPos();
+
+		void SetxPos(int xPos);
+		void SetyPos(int yPos);
+
+		void SetTexture();
+
 	protected:
 		int Id;
-		int xPos;
-		int yPos;
+		float xPos;
+		float yPos;
 
 		GameEngine::SpriteRenderComponent* m_renderComponent;
 	};
