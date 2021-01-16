@@ -21,6 +21,12 @@ namespace Game
 
 		void initBoardPos();
 
+		void SwapOrb(int x1, int y1, int x2, int y2);
+
+		OrbEntity* GetFirstOrb();
+
+		std::vector<std::vector<OrbEntity*>> GetTiles();
+
 		int randomizeId();
 
 	protected:
