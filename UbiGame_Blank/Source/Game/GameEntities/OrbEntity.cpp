@@ -24,7 +24,26 @@ void Game::OrbEntity::SetId(int newId)
 	this->SetTexture();
 }
 
+// ---------------- GETTERS/SETTERS for position of orb objects
 
+int Game::OrbEntity::GetxPos() {
+	return this->xPos;
+}
+
+int Game::OrbEntity::GetyPos() {
+	return this->yPos;
+}
+
+void Game::OrbEntity::SetxPos(int x) {
+	this->xPos = x;
+}
+
+void Game::OrbEntity::SetyPos(int y) {
+	this->yPos = y;
+}
+
+
+// --------------- Settexture for each orb as basec on specific id values
 
 void Game::OrbEntity::SetTexture() {
 	if (this->GetId() == 1) {
