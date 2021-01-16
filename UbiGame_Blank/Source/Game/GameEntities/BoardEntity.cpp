@@ -29,8 +29,11 @@ BoardEntity::BoardEntity()
 			GameEngine::GameEngineMain::GetInstance()->AddEntity(orb);
 			tiles[i].push_back(orb);
 			orb->SetPos(tilesPos[i][j]);
+			// Add position attributes to the orb object
+			orb->SetxPos(i);
+			orb->SetyPos(j);
 			orb->SetId(randomizeId());
-			orb->setTexture();
+			orb->SetTexture();
 		}
 	}
 
