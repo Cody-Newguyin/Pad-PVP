@@ -29,15 +29,19 @@ void PlayerControlComponent::Update()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
+
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
+
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
+
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
+
 	}
 
 }

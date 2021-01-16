@@ -211,15 +211,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\Game\GameEntities\OrbEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\PlayerEntity.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\img\board_bg.png" />
-    <Image Include="Resources\img\orb_1.png" />
-    <Image Include="Resources\img\orb_2.png" />
-    <Image Include="Resources\img\orb_3.png" />
-    <Image Include="Resources\img\orb_4.png" />
-    <Image Include="Resources\img\orb_5.png" />
-    <Image Include="Resources\img\orb_6.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
