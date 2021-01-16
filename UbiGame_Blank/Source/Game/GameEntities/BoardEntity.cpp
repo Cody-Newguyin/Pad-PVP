@@ -1,6 +1,7 @@
 // Ravinder Mangat - BoardEntity.cpp
 // Purpose to create physical board to hold tiles
 
+#include <iostream>
 #include "BoardEntity.h"
 #include "OrbEntity.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
@@ -12,18 +13,26 @@ using namespace Game;
 BoardEntity::BoardEntity() 
 	:orb(nullptr)
 {
+	this->SetPos(sf::Vector2f(400.f, 400.f));
+	initBoardPos();
 
-	orb = new OrbEntity();
-
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(orb);
+	for (int i = 0; i < 6; i++) {
+		tiles.push_back(std::vector < OrbEntity* >());
+		for (int j = 0; j < 5; j++) {
+			orb = new OrbEntity();
+			GameEngine::GameEngineMain::GetInstance()->AddEntity(orb);
+			tiles[i].push_back(orb);
+			orb->SetPos(tilesPos[i][j]);
+		}
+	}
 
 	m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
 	m_renderComponent->SetTexture(GameEngine::eTexture::Board_Bg);
 	m_renderComponent->SetZLevel(1);
 	m_renderComponent->SetTileIndex(0, 0);
 
-	this->SetPos(sf::Vector2f(400.f, 400.f));
-	this->SetSize(sf::Vector2f(600.f, 500.f));
+	
+	this->SetSize(sf::Vector2f(480.f, 405.f));
 
 }
 
@@ -37,9 +46,10 @@ void BoardEntity::OnAddToWorld() {
 
 void BoardEntity::initBoardPos() {
 	for (int i = 0; i < 6; i++) {
+		int x = (i - 2.5) * 75;
 		for (int j = 0; j < 5; j++) {
-
-			tilesPos[i][j] = this->GetPos();
+			int y = (j - 2) * 75;
+			tilesPos[i][j] = sf::Vector2f(x,y) + this->GetPos();
 		}
 	}
 }
