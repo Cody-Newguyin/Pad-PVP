@@ -2,6 +2,8 @@
 // Purpose to create physical board to hold tiles
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "BoardEntity.h"
 #include "OrbEntity.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"
@@ -13,8 +15,14 @@ using namespace Game;
 BoardEntity::BoardEntity() 
 	:orb(nullptr)
 {
+	srand((unsigned)time(0));
 	this->SetPos(sf::Vector2f(400.f, 400.f));
 	initBoardPos();
+
+	std::cout << "Random: " << randomizeId()<<std::endl;
+	std::cout << "Random: " << randomizeId()<<std::endl;
+	std::cout << "Random: " << randomizeId()<<std::endl;
+
 
 	for (int i = 0; i < 6; i++) {
 		tiles.push_back(std::vector < OrbEntity* >());
@@ -23,6 +31,8 @@ BoardEntity::BoardEntity()
 			GameEngine::GameEngineMain::GetInstance()->AddEntity(orb);
 			tiles[i].push_back(orb);
 			orb->SetPos(tilesPos[i][j]);
+			orb->SetId(randomizeId());
+			orb->setTexture();
 		}
 	}
 
@@ -43,6 +53,11 @@ BoardEntity::~BoardEntity() {
 
 void BoardEntity::OnAddToWorld() {
 	Entity::OnAddToWorld();
+}
+
+int BoardEntity::randomizeId() {
+	return (rand() % 6) + 1;
+
 }
 
 void BoardEntity::initBoardPos() {

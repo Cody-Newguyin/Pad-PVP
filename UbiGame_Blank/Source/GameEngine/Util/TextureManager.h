@@ -13,7 +13,11 @@ namespace GameEngine
 			None = -1,
 			Orb_1 = 0,
 			Orb_2 = 1,
-			Board_Bg = 2,
+			Orb_3 = 2,
+			Orb_4 = 3,
+			Orb_5 = 4,
+			Orb_6 = 5,
+			Board_Bg = 6,
 			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
 
 			Count,
@@ -26,6 +30,10 @@ namespace GameEngine
 		{
 		case eTexture::Orb_1:	return "orb_1.png";
 		case eTexture::Orb_2:	return "orb_2.png";
+		case eTexture::Orb_3:	return "orb_3.png";
+		case eTexture::Orb_4:	return "orb_4.png";
+		case eTexture::Orb_5:	return "orb_5.png";
+		case eTexture::Orb_6:	return "orb_6.png";
 		case eTexture::Board_Bg: return "board_bg.png";
 		
 		default:	return "UnknownTexType";
