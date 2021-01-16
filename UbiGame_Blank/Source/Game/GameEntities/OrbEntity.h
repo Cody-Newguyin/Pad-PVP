@@ -13,7 +13,6 @@ namespace Game
 		
 		int GetId();
 		void SetId(int newId);
-		void setTexture();
 
 		void SetTexture();
 

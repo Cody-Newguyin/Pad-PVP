@@ -32,7 +32,7 @@ BoardEntity::BoardEntity()
 			tiles[i].push_back(orb);
 			orb->SetPos(tilesPos[i][j]);
 			orb->SetId(randomizeId());
-			orb->setTexture();
+			orb->SetTexture();
 		}
 	}
 

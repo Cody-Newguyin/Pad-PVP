@@ -25,19 +25,9 @@ void Game::OrbEntity::SetId(int newId)
 	this->SetTexture();
 }
 
-void Game::OrbEntity::SetTexture() {
-	switch (Id) {
-	case (1):
-		m_renderComponent->SetTexture(GameEngine::eTexture::Orb_1);
-		break;
-	case (2):
-		m_renderComponent->SetTexture(GameEngine::eTexture::Orb_2);
-		break;
-	}
-	this->Id = newId;
-}
 
-void Game::OrbEntity::setTexture() {
+
+void Game::OrbEntity::SetTexture() {
 	if (this->GetId() == 1) {
 		m_renderComponent->SetTexture(GameEngine::eTexture::Orb_1);
 	}
