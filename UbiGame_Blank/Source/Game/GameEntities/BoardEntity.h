@@ -21,6 +21,8 @@ namespace Game
 
 		void initBoardPos();
 
+		int randomizeId();
+
 	protected:
 		OrbEntity* orb;
 		std::vector<std::vector<OrbEntity*>> tiles;
