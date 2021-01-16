@@ -19,3 +19,8 @@ int Game::OrbEntity::GetId()
 {
 	return Id;
 }
+
+void Game::OrbEntity::SetId(int newId)
+{
+	Id = newId;
+}

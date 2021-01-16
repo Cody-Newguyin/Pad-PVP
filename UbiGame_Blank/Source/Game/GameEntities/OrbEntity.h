@@ -13,6 +13,7 @@ namespace Game
 		~OrbEntity();
 		
 		int GetId();
+		void SetId(int newId);
 
 	protected:
 		int Id;
