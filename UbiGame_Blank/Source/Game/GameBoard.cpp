@@ -11,12 +11,11 @@ GameBoard::GameBoard()
 	:board(nullptr)
 {
 	board = new BoardEntity();
-	player = new PlayerEntity();
+	player = new PlayerEntity(board);
 
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(board);
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(player);
 	
-	player->setCurrentOrb(board->GetFirstOrb());
 }
 
 

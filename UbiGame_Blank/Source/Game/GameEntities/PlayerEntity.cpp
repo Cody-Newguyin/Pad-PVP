@@ -1,10 +1,12 @@
 #include "PlayerEntity.h"
+#include "Game/GameComponent/BoardControl.h"
 
 using namespace Game;
 
-PlayerEntity::PlayerEntity()
+PlayerEntity::PlayerEntity(BoardEntity* board)
 {
-
+	BoardControlComponent = AddComponent<BoardControl>();
+	BoardControlComponent->SetBoard(board);
 }
 
 
@@ -13,9 +15,5 @@ PlayerEntity::~PlayerEntity()
 
 }
 
-void PlayerEntity::setCurrentOrb(OrbEntity* newOrb)
-{
-	currentOrb = newOrb;
-	currentOrb->SetId(2);
-}
+
 

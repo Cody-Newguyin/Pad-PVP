@@ -1,20 +1,18 @@
 #pragma once
 
+#include "Game/GameComponent/BoardControl.h"
 #include "GameEngine/EntitySystem/Entity.h"
-#include "OrbEntity.h"
 
 namespace Game
 {
 	class PlayerEntity : public GameEngine::Entity
 	{
 	public:
-		PlayerEntity();
+		PlayerEntity(BoardEntity* board);
 		~PlayerEntity();
 
-		void setCurrentOrb(OrbEntity* newOrb);
 	protected:
-		OrbEntity* currentOrb;
-
+		BoardControl* BoardControlComponent;
 	};
 }
 
