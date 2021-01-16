@@ -34,6 +34,7 @@ BoardEntity::BoardEntity()
 	
 	this->SetSize(sf::Vector2f(480.f, 405.f));
 
+
 }
 
 BoardEntity::~BoardEntity() {

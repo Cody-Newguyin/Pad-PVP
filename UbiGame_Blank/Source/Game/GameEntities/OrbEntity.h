@@ -1,7 +1,6 @@
 #pragma once
 
 #include "GameEngine/EntitySystem/Entity.h"
-
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 
 namespace Game
@@ -13,6 +12,7 @@ namespace Game
 		~OrbEntity();
 		
 		int GetId();
+		void SetId(int newId);
 
 	protected:
 		int Id;
