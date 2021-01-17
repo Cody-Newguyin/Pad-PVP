@@ -73,7 +73,7 @@ void Game::BoardControl::Update()
 			}
 			std::cout << "Down" << std::endl;
 		}
-		//GetEntity()->SetPos(currentOrb->GetPos());
+		GetEntity()->SetPos(currentOrb->GetPos());
 	}
 	else if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ||
 			sf::Keyboard::isKeyPressed(sf::Keyboard::Right) ||

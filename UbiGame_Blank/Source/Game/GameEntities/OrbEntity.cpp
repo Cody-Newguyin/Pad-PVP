@@ -3,7 +3,7 @@
 Game::OrbEntity::OrbEntity()
 {
 	m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
-	m_renderComponent->SetZLevel(2);
+	m_renderComponent->SetZLevel(3);
 	this->SetPos(sf::Vector2f(100.f, 100.f));
 	this->SetId(1);
 	//this->SetSize(sf::Vector2f(30.f, 30.f));
