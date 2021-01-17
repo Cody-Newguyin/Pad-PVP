@@ -86,99 +86,126 @@ void BoardEntity::SwapOrb(int x1, int y1, int x2, int y2) {
 
 void Game::BoardEntity::Solve()
 {
-	bool isMatchArray[6][5] = { false };
+
 	int comboCount = 0;
-	// check vertical matches
-
-	for( int i = 0; i < 3; i++ )
-	{
-		for( int j = 0; j < 6; j++ )
-		{
-			int n = i;
-			int counter = 0;
-
-			while(n < 5)
-			{
-				if (Game::BoardEntity::tiles[j][n]->GetId() == Game::BoardEntity::tiles[j][i]->GetId())
-				{
-					counter++;
-				}
-				else
-				{
-					break;
-				}
-				n++;
-			}
-			if (counter >= 3)
-			{
-				bool isCombo = true;
-	
-				for(int x = 0; x < counter; x++)
-				{
-					if (isMatchArray[j][i + x])isCombo = false;
-					isMatchArray[j][i + x] = true;
-				}
-				if (isCombo)comboCount++;
-			}
-		}
-	}
-
-	// check horizontal matches
-
-	for( int i = 0; i < 5; i++ )
-	{
-		for( int j = 0; j < 4; j++ )
-		{
-			int n = j;
-			int counter = 0;
-
-			while(n < 6)
-			{
-				if (Game::BoardEntity::tiles[n][i]->GetId() == Game::BoardEntity::tiles[j][i]->GetId())
-				{
-					counter++;
-				}
-				else
-				{
-					break;
-				}
-				n++;
-			}
-			if (counter >= 3)
-			{
-				bool isCombo = true;
-				for(int x = 0; x < counter; x++)
-				{
-					if (isMatchArray[j + x][i])isCombo = false;
-					isMatchArray[j + x][i] = true;
-				}
-				if (isCombo)comboCount++;
-			}
-		}
-
-	}
 	int score = 0;
-	for( int i = 0; i < 5; i++ )
+	int cascade = -1;
+	// check vertical matches
+	bool skyFall = true;
+	while (skyFall)
 	{
-		for( int j = 0; j < 6; j++ )
+		bool isMatchArray[6][5] = { false };
+		skyFall = false;
+		for (int i = 0; i < 3; i++)
 		{
-			if (isMatchArray[j][i])
+			for (int j = 0; j < 6; j++)
 			{
-				score++;
-				Game::BoardEntity::tiles[j][i]->SetId(7);
+				int n = i;
+				int counter = 0;
+				while (n < 5)
+				{
+					int currentId = Game::BoardEntity::tiles[j][i]->GetId();
+					if (currentId != 7)
+					{
+						if (Game::BoardEntity::tiles[j][n]->GetId() == currentId)
+						{
+							counter++;
+						}
+						else
+						{
+							break;
+						}
+
+					}
+					n++;
+				}
+				if (counter >= 3)
+				{
+					bool isCombo = true;
+					skyFall = true;
+					for (int x = 0; x < counter; x++)
+					{
+						if (isMatchArray[j][i + x])isCombo = false;
+						isMatchArray[j][i + x] = true;
+					}
+					if (isCombo)comboCount++;
+				}
+			}
+		}
+
+		// check horizontal matches
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				int n = j;
+				int counter = 0;
+
+				while (n < 6)
+				{
+					int currentId = Game::BoardEntity::tiles[j][i]->GetId();
+					if (currentId != 7)
+					{
+						if (Game::BoardEntity::tiles[n][i]->GetId() == currentId)
+						{
+							counter++;
+						}
+						else
+						{
+							break;
+						}
+
+					}
+					n++;
+				}
+				if (counter >= 3)
+				{
+					bool isCombo = true;
+					skyFall = true;
+					for (int x = 0; x < counter; x++)
+					{
+						if (isMatchArray[j + x][i])isCombo = false;
+						isMatchArray[j + x][i] = true;
+					}
+					if (isCombo)comboCount++;
+				}
+			}
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 6; j++)
+			{
+				if (isMatchArray[j][i])
+				{
+					score++;
+					Game::BoardEntity::tiles[j][i]->SetId(7);
+				}
+
 			}
 
 		}
-
+		bool fall = true;
+		while (fall)
+		{
+			fall = false;
+			for (int i = 1; i < 5; i++)
+			{
+				for (int j = 0; j < 6; j++)
+				{
+					if ((Game::BoardEntity::tiles[j][i]->GetId() == 7) && (Game::BoardEntity::tiles[j][i - 1]->GetId() != 7))
+					{
+						this->SwapOrb(j, i, j, i - 1);
+						fall = true;
+					}
+				}
+			}
+		}
+		cascade++;
 	}
 	std::cout << "Combo: " << comboCount << std::endl;
-	std::cout << "Score: " << score << " x " << comboCount << " = " << score * comboCount << std::endl;
-
-
-
-
-
-
+	std::cout << "Score: " << score << " x " << comboCount << " x " << cascade << " = " << score * comboCount * cascade << std::endl;
+	
+	
 }
 
 
