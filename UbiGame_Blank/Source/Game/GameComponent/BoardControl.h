@@ -18,6 +18,9 @@ namespace Game
 		void setCurrentOrb(OrbEntity* newOrb);
 
 	private:
+		bool lastState = false;
+		bool currentState = false;
+
 		BoardEntity* board;
 		OrbEntity* currentOrb;
 	};
