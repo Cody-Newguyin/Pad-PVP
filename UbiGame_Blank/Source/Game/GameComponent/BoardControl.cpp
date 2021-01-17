@@ -9,6 +9,7 @@ using namespace Game;
 
 Game::BoardControl::BoardControl()
 {
+	
 }
 
 Game::BoardControl::~BoardControl()
@@ -36,6 +37,7 @@ void Game::BoardControl::Update()
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
+		board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos() + 1, currentOrb->GetyPos());
 		std::cout << "Right" << std::endl;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

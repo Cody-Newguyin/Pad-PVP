@@ -22,7 +22,8 @@ GameEngineMain::GameEngineMain()
 	: m_renderTarget(nullptr)
 	, m_gameBoard(nullptr)
 	, m_windowInitialised(false)
-{
+{	
+	
 	CreateAndSetUpWindow();
 	//Load predefined textures
 	TextureManager::GetInstance()->LoadTextures();
@@ -52,6 +53,7 @@ void GameEngineMain::OnInitialised()
 void GameEngineMain::CreateAndSetUpWindow()
 {
 	m_renderWindow = new sf::RenderWindow(sf::VideoMode((unsigned int)WINDOW_WIDTH, (unsigned int)WINDOW_HEIGHT), "Hack The North");
+	//m_renderWindow.setKeyRepeatEnabled(false);
 	m_renderTarget = m_renderWindow;
 }
 

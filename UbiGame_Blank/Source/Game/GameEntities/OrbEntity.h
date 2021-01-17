@@ -20,7 +20,7 @@ namespace Game
 		void SetxPos(int xPos);
 		void SetyPos(int yPos);
 
-		void setTexture();
+		void SetTexture();
 
 	protected:
 		int Id;
