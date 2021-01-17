@@ -21,6 +21,11 @@ namespace Game
 		bool lastState = false;
 		bool currentState = false;
 
+		bool LeftKeyFlag = false;
+		bool RightKeyFlag = false;
+		bool UpKeyFlag = false;
+		bool DownKeyFlag = false;
+
 		BoardEntity* board;
 		OrbEntity* currentOrb;
 	};

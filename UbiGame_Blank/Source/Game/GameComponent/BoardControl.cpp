@@ -32,55 +32,52 @@ void Game::BoardControl::Update()
 	}
 
 
-	if (!lastState) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (!LeftKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		LeftKeyFlag = true;
+		if (currentOrb->GetxPos() != 0)
 		{
-			lastState = true;
-			if (currentOrb->GetxPos() != 0)
-			{
-				board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos() - 1, currentOrb->GetyPos());
-				currentOrb->SetxPos(currentOrb->GetxPos() - 1);
-			}
-			std::cout << "Left" << std::endl;
+			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos() - 1, currentOrb->GetyPos());
+			currentOrb->SetxPos(currentOrb->GetxPos() - 1);
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			lastState = true;
-			if (currentOrb->GetxPos() != 5)
-			{
-				board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos() + 1, currentOrb->GetyPos());
-				currentOrb->SetxPos(currentOrb->GetxPos() + 1);
-			}
-			std::cout << "Right" << std::endl;
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		{
-			lastState = true;
-			if (currentOrb->GetyPos() != 0)
-			{
-				board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos(), currentOrb->GetyPos() - 1);
-				currentOrb->SetyPos(currentOrb->GetyPos() - 1);
-			}
-			std::cout << "Up" << std::endl;
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		{
-			lastState = true;
-			if (currentOrb->GetyPos() != 4)
-			{
-				board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos(), currentOrb->GetyPos() + 1);
-				currentOrb->SetyPos(currentOrb->GetyPos() + 1);
-			}
-			std::cout << "Down" << std::endl;
-		}
-		GetEntity()->SetPos(currentOrb->GetPos());
+		std::cout << "Left" << std::endl;
 	}
-	else if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ||
-			sf::Keyboard::isKeyPressed(sf::Keyboard::Right) ||
-			sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ||
-			sf::Keyboard::isKeyPressed(sf::Keyboard::Down))) {
-			lastState = false;
-	};
+	if (!RightKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		RightKeyFlag = true;
+		if (currentOrb->GetxPos() != 5)
+		{
+			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos() + 1, currentOrb->GetyPos());
+			currentOrb->SetxPos(currentOrb->GetxPos() + 1);
+		}
+		std::cout << "Right" << std::endl;
+	}
+	if (!UpKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		UpKeyFlag = true;
+		if (currentOrb->GetyPos() != 0)
+		{
+			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos(), currentOrb->GetyPos() - 1);
+			currentOrb->SetyPos(currentOrb->GetyPos() - 1);
+		}
+		std::cout << "Up" << std::endl;
+	}
+	if (!DownKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		DownKeyFlag = true;
+		if (currentOrb->GetyPos() != 4)
+		{
+			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos(), currentOrb->GetyPos() + 1);
+			currentOrb->SetyPos(currentOrb->GetyPos() + 1);
+		}
+		std::cout << "Down" << std::endl;
+	}
+	GetEntity()->SetPos(currentOrb->GetPos());
+
+	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))) LeftKeyFlag = false;
+	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))) RightKeyFlag = false;
+	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))) UpKeyFlag = false;
+	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))) DownKeyFlag = false;
 
 }
 
