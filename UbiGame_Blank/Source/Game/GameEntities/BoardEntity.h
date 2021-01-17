@@ -15,6 +15,7 @@ namespace Game
 	{
 	public: 
 		BoardEntity();
+		BoardEntity(sf::Vector2f position);
 		~BoardEntity();
 
 		virtual void OnAddToWorld() override;

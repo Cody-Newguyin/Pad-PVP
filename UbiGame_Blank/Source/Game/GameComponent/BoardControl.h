@@ -14,13 +14,19 @@ namespace Game
 
 		void SetBoard(BoardEntity* newBoard);
 
+		void SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up);
+
 		virtual void Update() override;
 		void setCurrentOrb(OrbEntity* newOrb);
 
 	private:
-		bool lastState = false;
-		bool currentState = false;
+		
+		sf::Keyboard::Key LeftKey;
+		sf::Keyboard::Key RightKey;
+		sf::Keyboard::Key UpKey;
+		sf::Keyboard::Key DownKey;
 
+		bool EnterKeyFlag = false;
 		bool LeftKeyFlag = false;
 		bool RightKeyFlag = false;
 		bool UpKeyFlag = false;

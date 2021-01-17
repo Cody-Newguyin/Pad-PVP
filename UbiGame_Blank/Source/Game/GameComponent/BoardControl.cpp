@@ -21,6 +21,13 @@ void Game::BoardControl::SetBoard(BoardEntity* newBoard) {
 	currentOrb = board->GetFirstOrb();
 }
 
+void Game::BoardControl::SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up) 
+{
+	LeftKey = left;
+	RightKey = right;
+	UpKey = up;
+	DownKey = down;
+}
 
 void Game::BoardControl::Update()
 {
@@ -32,7 +39,7 @@ void Game::BoardControl::Update()
 	}
 
 
-	if (!LeftKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (!LeftKeyFlag && sf::Keyboard::isKeyPressed(LeftKey))
 	{
 		LeftKeyFlag = true;
 		if (currentOrb->GetxPos() != 0)
@@ -42,7 +49,7 @@ void Game::BoardControl::Update()
 		}
 		std::cout << "Left" << std::endl;
 	}
-	if (!RightKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if (!RightKeyFlag && sf::Keyboard::isKeyPressed(RightKey))
 	{
 		RightKeyFlag = true;
 		if (currentOrb->GetxPos() != 5)
@@ -52,7 +59,7 @@ void Game::BoardControl::Update()
 		}
 		std::cout << "Right" << std::endl;
 	}
-	if (!UpKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (!UpKeyFlag && sf::Keyboard::isKeyPressed(UpKey))
 	{
 		UpKeyFlag = true;
 		if (currentOrb->GetyPos() != 0)
@@ -62,7 +69,7 @@ void Game::BoardControl::Update()
 		}
 		std::cout << "Up" << std::endl;
 	}
-	if (!DownKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if (!DownKeyFlag && sf::Keyboard::isKeyPressed(DownKey))
 	{
 		DownKeyFlag = true;
 		if (currentOrb->GetyPos() != 4)
@@ -73,20 +80,24 @@ void Game::BoardControl::Update()
 		std::cout << "Down" << std::endl;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+	
+	if (!EnterKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		EnterKeyFlag = true;
+		std::cout << "Enter" << std::endl;
 		board->Solve();
 	}
+	else if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))) EnterKeyFlag = false;
 
 	GetEntity()->SetPos(currentOrb->GetPos());
 
-	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))) LeftKeyFlag = false;
-	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))) RightKeyFlag = false;
-	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))) UpKeyFlag = false;
-	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))) DownKeyFlag = false;
+	if (!(sf::Keyboard::isKeyPressed(LeftKey))) LeftKeyFlag = false;
+	if (!(sf::Keyboard::isKeyPressed(RightKey))) RightKeyFlag = false;
+	if (!(sf::Keyboard::isKeyPressed(UpKey))) UpKeyFlag = false;
+	if (!(sf::Keyboard::isKeyPressed(DownKey))) DownKeyFlag = false;
 
 }
 
 void Game::BoardControl::setCurrentOrb(OrbEntity* newOrb)
 {
 	currentOrb = newOrb;
-}
+} 

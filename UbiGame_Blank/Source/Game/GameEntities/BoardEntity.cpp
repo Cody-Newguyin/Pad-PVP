@@ -14,12 +14,12 @@
 
 using namespace Game;
 
-BoardEntity::BoardEntity() 
+BoardEntity::BoardEntity(sf::Vector2f position)
 	:orb(nullptr)
 {
 
 	srand((unsigned)time(0));
-	this->SetPos(sf::Vector2f(400.f, 400.f));
+	this->SetPos(position);
 	initBoardPos();
 
 	for (int i = 0; i < 6; i++) {
@@ -85,7 +85,99 @@ void BoardEntity::SwapOrb(int x1, int y1, int x2, int y2) {
 
 void Game::BoardEntity::Solve()
 {
-};
+	bool isMatchArray[6][5] = { false };
+	int comboCount = 0;
+	// check vertical matches
+
+	for( int i = 0; i < 3; i++ )
+	{
+		for( int j = 0; j < 6; j++ )
+		{
+			int n = i;
+			int counter = 0;
+
+			while(n < 5)
+			{
+				if (Game::BoardEntity::tiles[j][n]->GetId() == Game::BoardEntity::tiles[j][i]->GetId())
+				{
+					counter++;
+				}
+				else
+				{
+					break;
+				}
+				n++;
+			}
+			if (counter >= 3)
+			{
+				if(!isMatchArray[j][i])comboCount++;
+				for(int x = 0; x < counter; x++)
+				{
+					isMatchArray[j][i + x] = true;
+				}
+
+			}
+		}
+	}
+
+	// check horizontal matches
+
+	for( int i = 0; i < 5; i++ )
+	{
+		for( int j = 0; j < 4; j++ )
+		{
+			int n = j;
+			int counter = 0;
+
+			while(n < 6)
+			{
+				if (Game::BoardEntity::tiles[n][i]->GetId() == Game::BoardEntity::tiles[j][i]->GetId())
+				{
+					counter++;
+				}
+				else
+				{
+					break;
+				}
+				n++;
+			}
+			if (counter >= 3)
+			{
+				if(!isMatchArray[j][i])comboCount++;
+				for(int x = 0; x < counter; x++)
+				{
+					isMatchArray[j + x][i] = true;
+				}
+
+			}
+		}
+
+	}
+
+	for( int i = 0; i < 5; i++ )
+	{
+		for( int j = 0; j < 6; j++ )
+		{
+			 if (isMatchArray[j][i])
+			 {
+				 std::cout << 1 << " ";
+			 }
+			 else
+			 {
+				 std::cout << 0 << " ";
+			 }
+		}
+		std::cout << std::endl;
+
+	}
+	std::cout << "Combo: " << comboCount << std::endl;
+
+
+
+
+
+
+}
 
 OrbEntity* BoardEntity::GetFirstOrb() {
 	return Game::BoardEntity::tiles[0][0];
