@@ -1,21 +1,9 @@
-# Pad PvP
-Authors: Vaibhav, Ravi, Kevin, Cody
+# HackTheNorth Project - Match 3 Game
+Authors: Ravinder, Kevin, Cody
 Date 1/15/2021
 
-
-# HackersNest
-
-[![Build Targets](https://github.com/UbisoftToronto/HackersNest/workflows/Build%20Targets/badge.svg)](https://github.com/UbisoftToronto/HackersNest/actions)
-
-Base framework for the Ubisoft Toronto Hackathon challenges
-
-# HackTheNorth Challenge
-
-Demonstrate your abilities as a game developer and take us on a journey! Our mentors will help you succeed by providing hands on demonstrations, documentation and consultations along the way.
-
-**Please attend our workshop from 5PM to 5:30PM EST on Friday, Jan 15th** and visit our Hopin booth and Discord channel to meet our mentors Radoslaw Malicki, Nikhil Ramburrun, Xavier Sadoulet and Kevin Jeong.
-
-In order to be eligible for the prize, your game must be using our API in C++. You must choose at least **ONE** mechanic/theme from the following list to be included in your game:
+Challenge:
+Using the Ubisoft API in C++. You must choose at least **ONE** mechanic/theme from the following list to be included in your game:
 
 * One button game
 * 60 second game
@@ -29,8 +17,12 @@ In order to be eligible for the prize, your game must be using our API in C++. Y
 * Pong
   * How can you remake this classic arcade game with a twist?
 
-## Documentation
+--------------------------------------------------------------------------------------------------------
+# Match 3 Duel Game
+This is a local two player game where you can face off against your friends in a match 3 style game. The game consists of two boards with a randomized set of 6 different coloured tiles; red, blue, green, yellow, purple, and pink. Obtain as many matches as you can and once both players are ready, enter your boards and wait to see who gets the biggest score!
 
-- [Build and Run](https://github.com/UbisoftToronto/HackersNest/wiki/Build-and-Run)
-- [Code Overview](https://github.com/UbisoftToronto/HackersNest/wiki/GameEngine-Overview)
-- [Step By Step Tutorial](https://github.com/UbisoftToronto/HackersNest/wiki/Step-By-Step-Tutorial)
+## How to Play
+The game is a simple match 3 syle game with a slight twist following the same idea as the popular Puzzles and Dragons board game. Each player starts at a ceratin position on the board with a specifc type of tile. Each player can move their tile using WASD and the arrow keys. As you move your tile you switch the tile with the adjacent tile you move in the direction of. You must keep traversing through the board and get as many of the same tiles in a row of 3 as you can. The player with the most matches and consequently the highest score, WINS!
+
+## Ubisoft API
+We were able to take advantage of the Ubisoft API and easily render and produce our game sprites and display. The texture manager allowed for simple implementation of a 2D graphics environment. We were able to easily integrate our game components and entities onto a the gameenginer produced window and event. From there it was matter of implementing the board, tile, and playes entities working together.
