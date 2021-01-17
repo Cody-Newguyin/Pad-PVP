@@ -47,7 +47,6 @@ void Game::BoardControl::Update()
 			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos() - 1, currentOrb->GetyPos());
 			currentOrb->SetxPos(currentOrb->GetxPos() - 1);
 		}
-		std::cout << "Left" << std::endl;
 	}
 	if (!RightKeyFlag && sf::Keyboard::isKeyPressed(RightKey))
 	{
@@ -57,7 +56,6 @@ void Game::BoardControl::Update()
 			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos() + 1, currentOrb->GetyPos());
 			currentOrb->SetxPos(currentOrb->GetxPos() + 1);
 		}
-		std::cout << "Right" << std::endl;
 	}
 	if (!UpKeyFlag && sf::Keyboard::isKeyPressed(UpKey))
 	{
@@ -67,7 +65,6 @@ void Game::BoardControl::Update()
 			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos(), currentOrb->GetyPos() - 1);
 			currentOrb->SetyPos(currentOrb->GetyPos() - 1);
 		}
-		std::cout << "Up" << std::endl;
 	}
 	if (!DownKeyFlag && sf::Keyboard::isKeyPressed(DownKey))
 	{
@@ -77,13 +74,11 @@ void Game::BoardControl::Update()
 			board->SwapOrb(currentOrb->GetxPos(), currentOrb->GetyPos(), currentOrb->GetxPos(), currentOrb->GetyPos() + 1);
 			currentOrb->SetyPos(currentOrb->GetyPos() + 1);
 		}
-		std::cout << "Down" << std::endl;
 	}
 
 	
 	if (!EnterKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 		EnterKeyFlag = true;
-		std::cout << "Enter" << std::endl;
 		board->Solve();
 	}
 	else if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))) EnterKeyFlag = false;

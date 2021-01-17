@@ -110,12 +110,14 @@ void Game::BoardEntity::Solve()
 			}
 			if (counter >= 3)
 			{
-				if(!isMatchArray[j][i])comboCount++;
+				bool isCombo = true;
+	
 				for(int x = 0; x < counter; x++)
 				{
+					if (isMatchArray[j][i + x])isCombo = false;
 					isMatchArray[j][i + x] = true;
 				}
-
+				if (isCombo)comboCount++;
 			}
 		}
 	}
@@ -143,34 +145,28 @@ void Game::BoardEntity::Solve()
 			}
 			if (counter >= 3)
 			{
-				if(!isMatchArray[j][i])comboCount++;
+				bool isCombo = true;
 				for(int x = 0; x < counter; x++)
 				{
+					if (isMatchArray[j + x][i])isCombo = false;
 					isMatchArray[j + x][i] = true;
 				}
-
+				if (isCombo)comboCount++;
 			}
 		}
 
 	}
-
+	int score = 0;
 	for( int i = 0; i < 5; i++ )
 	{
 		for( int j = 0; j < 6; j++ )
 		{
-			 if (isMatchArray[j][i])
-			 {
-				 std::cout << 1 << " ";
-			 }
-			 else
-			 {
-				 std::cout << 0 << " ";
-			 }
+			if (isMatchArray[j][i])score++;
 		}
-		std::cout << std::endl;
 
 	}
 	std::cout << "Combo: " << comboCount << std::endl;
+	std::cout << "Score: " << score << " x " << comboCount << " = " << score * comboCount << std::endl;
 
 
 
