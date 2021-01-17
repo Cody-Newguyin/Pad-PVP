@@ -25,10 +25,4 @@ This is a local two player game where you can face off against your friends in a
 The game is a simple match 3 syle game with a slight twist following the same idea as the popular Puzzles and Dragons board game. Each player starts at a ceratin position on the board with a specifc type of tile. Each player can move their tile using WASD and the arrow keys. As you move your tile you switch the tile with the adjacent tile you move in the direction of. You must keep traversing through the board and get as many of the same tiles in a row of 3 as you can. The player with the most matches and consequently the highest score, WINS!
 
 ## Ubisoft API
-We were able to take advantage of the Ubisoft API and easily render and produce our game sprites and display. The texture manager allowed for simple implementation of a 2D graphics environment.
-
-## Documentation
-
-- [Build and Run](https://github.com/UbisoftToronto/HackersNest/wiki/Build-and-Run)
-- [Code Overview](https://github.com/UbisoftToronto/HackersNest/wiki/GameEngine-Overview)
-- [Step By Step Tutorial](https://github.com/UbisoftToronto/HackersNest/wiki/Step-By-Step-Tutorial)
+We were able to take advantage of the Ubisoft API and easily render and produce our game sprites and display. The texture manager allowed for simple implementation of a 2D graphics environment. We were able to easily integrate our game components and entities onto a the gameenginer produced window and event. From there it was matter of implementing the board, tile, and playes entities working together.
