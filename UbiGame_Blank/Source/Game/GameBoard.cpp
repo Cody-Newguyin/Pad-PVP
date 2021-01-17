@@ -32,8 +32,8 @@ GameBoard::GameBoard()
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(board2);
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(player2);
 
-	player2->SetKeys(sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Down, sf::Keyboard::Up);
-	player1->SetKeys(sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::S, sf::Keyboard::W);
+	player2->SetKeys(sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Down, sf::Keyboard::Up, sf::Keyboard::Enter);
+	player1->SetKeys(sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::S, sf::Keyboard::W, sf::Keyboard::Space);
 }
 
 
@@ -46,4 +46,5 @@ GameBoard::~GameBoard()
 void GameBoard::Update(float delta)
 {	
 	timer->update(delta);
+	timePassed += delta;
 }

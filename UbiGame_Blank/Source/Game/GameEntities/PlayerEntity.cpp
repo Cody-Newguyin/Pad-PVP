@@ -10,7 +10,7 @@ PlayerEntity::PlayerEntity(BoardEntity* board)
 {
 	name = new TextUI("Player 1");
 	name->SetPos(board->GetPos() + sf::Vector2f(-80, -300));
-	score = new TextUI("222");
+	score = new TextUI("0");
 	score->SetPos(board->GetPos() + sf::Vector2f(-40, -250));
 
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(name);
@@ -24,6 +24,7 @@ PlayerEntity::PlayerEntity(BoardEntity* board)
 
 	BoardControlComponent = AddComponent<BoardControl>();
 	BoardControlComponent->SetBoard(board);
+	BoardControlComponent->SetScoreUI(score);
 }
 
 
@@ -32,8 +33,8 @@ PlayerEntity::~PlayerEntity()
 
 }
 
-void PlayerEntity::SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up) {
-	BoardControlComponent->SetKeys(left, right, down, up);
+void PlayerEntity::SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up, sf::Keyboard::Key confirm) {
+	BoardControlComponent->SetKeys(left, right, down, up, confirm);
 }
 
 

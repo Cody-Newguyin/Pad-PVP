@@ -1,7 +1,9 @@
 #include "BoardControl.h"
 
 #include <iostream>
+#include "Game/GameBoard.h"
 #include "Game/GameEntities/BoardEntity.h"
+#include "Game/GameEntities/TextUI.h"
 #include "GameEngine/GameEngineMain.h"
 #include <SFML/Window/Keyboard.hpp>
 
@@ -21,12 +23,17 @@ void Game::BoardControl::SetBoard(BoardEntity* newBoard) {
 	currentOrb = board->GetFirstOrb();
 }
 
-void Game::BoardControl::SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up) 
+void Game::BoardControl::SetScoreUI(TextUI* newUI) {
+	scoreUI = newUI;
+}
+
+void Game::BoardControl::SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up, sf::Keyboard::Key confirm)
 {
 	LeftKey = left;
 	RightKey = right;
 	UpKey = up;
 	DownKey = down;
+	ConfirmKey = confirm;
 }
 
 void Game::BoardControl::Update()
@@ -88,11 +95,14 @@ void Game::BoardControl::Update()
 	}
 
 	
-	if (!EnterKeyFlag && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+	if (!EnterKeyFlag && sf::Keyboard::isKeyPressed(ConfirmKey)) {
 		EnterKeyFlag = true;
-		board->Solve();
+		totalScore+= board->Solve();
+		scoreUI->SetString(std::to_string(totalScore));
+
+		board->randomizeBoard();
 	}
-	else if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))) EnterKeyFlag = false;
+	else if (!(sf::Keyboard::isKeyPressed(ConfirmKey))) EnterKeyFlag = false;
 
 	GetEntity()->SetPos(currentOrb->GetPos());
 

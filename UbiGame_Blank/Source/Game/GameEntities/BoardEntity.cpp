@@ -57,6 +57,24 @@ void BoardEntity::OnAddToWorld() {
 	Entity::OnAddToWorld();
 }
 
+void BoardEntity::randomizeBoard() {
+	tiles.clear();
+	for (int i = 0; i < 6; i++) {
+		tiles.push_back(std::vector < OrbEntity* >());
+		for (int j = 0; j < 5; j++) {
+			orb = new OrbEntity();
+			GameEngine::GameEngineMain::GetInstance()->AddEntity(orb);
+			tiles[i].push_back(orb);
+			orb->SetPos(tilesPos[i][j]);
+			// Add position attributes to the orb object
+			orb->SetxPos(i);
+			orb->SetyPos(j);
+			orb->SetId(randomizeId());
+			orb->SetTexture();
+		}
+	}
+}
+
 int BoardEntity::randomizeId() {
 	return (rand() % 6) + 1;
 
@@ -84,7 +102,7 @@ void BoardEntity::SwapOrb(int x1, int y1, int x2, int y2) {
 	Game::BoardEntity::tiles[x2][y2]->SetPos(sf::Vector2f(tilesPos[x2][y2]));
 }
 
-void Game::BoardEntity::Solve()
+int Game::BoardEntity::Solve()
 {
 
 	int comboCount = 0;
@@ -205,7 +223,7 @@ void Game::BoardEntity::Solve()
 	std::cout << "Combo: " << comboCount << std::endl;
 	std::cout << "Score: " << score << " x " << comboCount << " x " << cascade << " = " << score * comboCount * cascade << std::endl;
 	
-	
+	return score * comboCount * cascade;
 }
 
 

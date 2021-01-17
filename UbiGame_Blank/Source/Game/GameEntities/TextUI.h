@@ -12,10 +12,7 @@ namespace Game
 		TextUI(std::string text);
 		~TextUI();
 		void SetString(std::string text);
-
-	protected:
 		GameEngine::TextRenderComponent* textComponent;
 	};
-	;
 }
 

@@ -21,11 +21,13 @@ namespace Game
 
 		virtual void OnAddToWorld() override;
 
+		void randomizeBoard();
+
 		void initBoardPos();
 
 		void SwapOrb(int x1, int y1, int x2, int y2);
 
-		void Solve();
+		int Solve();
 
 		OrbEntity* GetFirstOrb();
 

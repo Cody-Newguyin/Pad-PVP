@@ -19,3 +19,5 @@ void Game::TextUI::SetString(std::string text) {
 	textComponent->SetString(text);
 }
 
+
+

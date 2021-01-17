@@ -19,8 +19,7 @@ namespace Game
 
 		void Update(float delta);		
 		bool IsGameOver() { return false; }
-		bool started;
-		float timeLeft;
+		float timePassed;
 
 	protected:
 		BoardEntity* board1;

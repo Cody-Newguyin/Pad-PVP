@@ -19,5 +19,6 @@ namespace Game
         GameBoard* gameBoard;
         float timeLeft;
         bool started;
+        int x, y;
 	};
 }
