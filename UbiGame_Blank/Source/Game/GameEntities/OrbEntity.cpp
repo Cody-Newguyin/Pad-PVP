@@ -60,7 +60,10 @@ void Game::OrbEntity::SetTexture() {
 	else if (this->GetId() == 5) {
 		m_renderComponent->SetTexture(GameEngine::eTexture::Orb_5);
 	} 
-	else {
+	else if (this->GetId() == 6) {
 		m_renderComponent->SetTexture(GameEngine::eTexture::Orb_6);
+	}
+	else {
+		m_renderComponent->SetZLevel(-1);
 	}
 }

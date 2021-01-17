@@ -161,7 +161,12 @@ void Game::BoardEntity::Solve()
 	{
 		for( int j = 0; j < 6; j++ )
 		{
-			if (isMatchArray[j][i])score++;
+			if (isMatchArray[j][i])
+			{
+				score++;
+				Game::BoardEntity::tiles[j][i]->SetId(7);
+			}
+
 		}
 
 	}
@@ -174,6 +179,8 @@ void Game::BoardEntity::Solve()
 
 
 }
+
+
 
 OrbEntity* BoardEntity::GetFirstOrb() {
 	return Game::BoardEntity::tiles[0][0];
