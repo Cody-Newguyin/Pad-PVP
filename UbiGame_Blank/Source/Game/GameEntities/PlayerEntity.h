@@ -1,5 +1,6 @@
 #pragma once
 
+#include "TextUI.h"
 #include "Game/GameComponent/BoardControl.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Entity.h"
@@ -15,6 +16,9 @@ namespace Game
 		void SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up);
 
 	protected:
+		TextUI* name;
+		TextUI* score;
+
 		BoardControl* BoardControlComponent;
 		GameEngine::SpriteRenderComponent* m_renderComponent;
 	};

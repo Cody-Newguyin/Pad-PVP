@@ -97,6 +97,10 @@ void GameEngineMain::RemoveEntity(Entity* entity)
 
 void GameEngineMain::Update()
 {
+	//We pool last delta and will pass it as GetTimeDelta - from game perspective it's more important that DT stays the same the whole frame, rather than be updated halfway through the frame
+	m_lastDT = sm_deltaTimeClock.getElapsedTime().asSeconds();
+	sm_deltaTimeClock.restart();
+
 	//First update will happen after init for the time being (we will add loading later)
 	if (!m_windowInitialised)
 	{
@@ -108,16 +112,13 @@ void GameEngineMain::Update()
 
 	UpdateWindowEvents();
 	if (m_gameBoard)
-		m_gameBoard->Update();
+		m_gameBoard->Update(m_lastDT);
 
 	UpdateEntities();
 	RenderEntities();
 
 	AddPendingEntities();
 
-	//We pool last delta and will pass it as GetTimeDelta - from game perspective it's more important that DT stays the same the whole frame, rather than be updated halfway through the frame
-	m_lastDT = sm_deltaTimeClock.getElapsedTime().asSeconds();
-	sm_deltaTimeClock.restart();
 }
 
 

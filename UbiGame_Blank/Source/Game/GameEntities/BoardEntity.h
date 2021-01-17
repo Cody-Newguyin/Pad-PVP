@@ -4,6 +4,7 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "OrbEntity.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "Game/GameBoard.h"
 
 // Creating board class
 
@@ -15,7 +16,7 @@ namespace Game
 	{
 	public: 
 		BoardEntity();
-		BoardEntity(sf::Vector2f position);
+		BoardEntity(sf::Vector2f position, GameBoard* gb);
 		~BoardEntity();
 
 		virtual void OnAddToWorld() override;
@@ -31,6 +32,7 @@ namespace Game
 		std::vector<std::vector<OrbEntity*>> GetTiles();
 
 		int randomizeId();
+        GameBoard* gameBoard;
 
 	protected:
 		OrbEntity* orb;

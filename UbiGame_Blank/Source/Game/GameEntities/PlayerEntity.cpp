@@ -1,10 +1,21 @@
 #include "PlayerEntity.h"
+
+#include <string>
 #include "Game/GameComponent/BoardControl.h"
+#include "GameEngine/GameEngineMain.h"
 
 using namespace Game;
 
 PlayerEntity::PlayerEntity(BoardEntity* board)
 {
+	name = new TextUI("Player 1");
+	name->SetPos(board->GetPos() + sf::Vector2f(-80, -300));
+	score = new TextUI("222");
+	score->SetPos(board->GetPos() + sf::Vector2f(-40, -250));
+
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(name);
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(score);
+
 	m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
 	m_renderComponent->SetZLevel(2);
 	m_renderComponent->SetTexture(GameEngine::eTexture::Overlay);

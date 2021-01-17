@@ -38,6 +38,17 @@ void Game::BoardControl::Update()
 		return;
 	}
 
+	bool left = sf::Keyboard::isKeyPressed(LeftKey);
+	bool right = sf::Keyboard::isKeyPressed(RightKey);
+	bool up = sf::Keyboard::isKeyPressed(UpKey);
+	bool down = sf::Keyboard::isKeyPressed(DownKey);
+	
+	// if (!board->started) {
+	// 	if (left || right || up || down) {
+	// 		board->started = true;
+	// 	}
+	// }
+
 
 	if (!LeftKeyFlag && sf::Keyboard::isKeyPressed(LeftKey))
 	{

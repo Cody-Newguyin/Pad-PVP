@@ -14,12 +14,13 @@
 
 using namespace Game;
 
-BoardEntity::BoardEntity(sf::Vector2f position)
+BoardEntity::BoardEntity(sf::Vector2f position, GameBoard* gb)
 	:orb(nullptr)
 {
 
 	srand((unsigned)time(0));
 	this->SetPos(position);
+	gameBoard = gb;
 	initBoardPos();
 
 	for (int i = 0; i < 6; i++) {
