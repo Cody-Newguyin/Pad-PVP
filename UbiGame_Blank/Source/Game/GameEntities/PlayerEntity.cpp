@@ -21,5 +21,8 @@ PlayerEntity::~PlayerEntity()
 
 }
 
+void PlayerEntity::SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up) {
+	BoardControlComponent->SetKeys(left, right, down, up);
+}
 
 

@@ -12,6 +12,8 @@ namespace Game
 		PlayerEntity(BoardEntity* board);
 		~PlayerEntity();
 
+		void SetKeys(sf::Keyboard::Key left, sf::Keyboard::Key right, sf::Keyboard::Key down, sf::Keyboard::Key up);
+
 	protected:
 		BoardControl* BoardControlComponent;
 		GameEngine::SpriteRenderComponent* m_renderComponent;

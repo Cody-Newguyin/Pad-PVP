@@ -20,8 +20,10 @@ namespace Game
 		bool IsGameOver() { return false; }
 
 	protected:
-		BoardEntity* board;
-		PlayerEntity* player;
+		BoardEntity* board1;
+		PlayerEntity* player1;
+		BoardEntity* board2;
+		PlayerEntity* player2;
 
 	};
 }
