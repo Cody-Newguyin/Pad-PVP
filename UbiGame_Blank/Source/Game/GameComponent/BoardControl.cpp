@@ -72,6 +72,11 @@ void Game::BoardControl::Update()
 		}
 		std::cout << "Down" << std::endl;
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		board->Solve();
+	}
+
 	GetEntity()->SetPos(currentOrb->GetPos());
 
 	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))) LeftKeyFlag = false;

@@ -23,6 +23,8 @@ namespace Game
 
 		void SwapOrb(int x1, int y1, int x2, int y2);
 
+		void Solve();
+
 		OrbEntity* GetFirstOrb();
 
 		std::vector<std::vector<OrbEntity*>> GetTiles();

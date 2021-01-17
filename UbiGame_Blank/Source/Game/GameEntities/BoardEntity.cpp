@@ -83,6 +83,10 @@ void BoardEntity::SwapOrb(int x1, int y1, int x2, int y2) {
 	Game::BoardEntity::tiles[x2][y2]->SetPos(sf::Vector2f(tilesPos[x2][y2]));
 }
 
+void Game::BoardEntity::Solve()
+{
+};
+
 OrbEntity* BoardEntity::GetFirstOrb() {
 	return Game::BoardEntity::tiles[0][0];
 }
